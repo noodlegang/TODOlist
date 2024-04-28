@@ -1,0 +1,18 @@
+﻿@model ToDoItem
+
+<h2>New Task</h2>
+
+<div asp-validation-summary="All" class="text-danger"></div>
+
+<form asp-action="Add" method="post">
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label">Name</label>
+        <input asp-for="Name" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label asp-for="StatusId" class="form-label">Status</label>
+        <select asp-for="StatusId" class="form-select" asp-items="@(new SelectList(ViewBag.Statuses, "StatusId", "StatusName"))"></select>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <a asp-action="Index" class="btn btn-primary">Back</a>
+</form>
